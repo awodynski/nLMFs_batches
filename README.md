@@ -28,7 +28,7 @@ Implements a Keras/TensorFlow pipeline with a custom `DFTLayer` to evaluate XC t
 ## Features
 
 - Custom **Keras `DFTLayer`** (e.g., PBE-x, B95/B97-c; optional range separation).
-- **On-the-fly DFT-D4** dispersion via a system `dftd4` binary.
+- **DFT-D4** dispersion via a system `dftd4` binary.
 - Flexible **test-set factory** (e.g., `BH76`, `W417`, `ACONF`, `FracP`, …).
 - Configurable model depth/width/activations and loss scaling.
 - Export of weights in a **TurboMole-friendly** format.
@@ -53,8 +53,6 @@ Implements a Keras/TensorFlow pipeline with a custom `DFTLayer` to evaluate XC t
     └── <test set files>           # ACONF.py, BH76.py, W417.py, ...
 ```
 
-> Note: Filenames may differ slightly in your copy; adapt paths accordingly.
-
 ---
 
 ## Requirements
@@ -62,7 +60,7 @@ Implements a Keras/TensorFlow pipeline with a custom `DFTLayer` to evaluate XC t
 - **Python 3.10+**
 - **TensorFlow 2.x**
 - `numpy`, `psutil`
-- Installed **DFT-D4** (Grimme group) available on your system path (or a known absolute path)
+- **DFT-D4** (Grimme group) available on your system path (a known absolute path)
 
 ---
 
@@ -82,7 +80,7 @@ pip install "tensorflow>=2.12" numpy psutil
 ## Data
 
 - The repository does **not** include training/test data.
-- Preprocessed NPY/GRID files are **available upon request**.
+- Preprocessed *.npy files are **available upon request**.
 - Expected per-set directory structure should match the paths you configure in `calc.py`.
 
 ---
@@ -111,18 +109,7 @@ Also adjust:
 
 ### DFT-D4 executable path (important)
 
-In **`opt/testsetclass.py`**, **replace the hard-coded DFT-D4 path** with your local path or rely on an environment variable:
-
-```python
-# Option A: absolute path
-DFTD4 = "/absolute/path/to/dftd4"
-
-# Option B: environment variable (recommended)
-import os
-DFTD4 = os.environ.get("DFTD4", "dftd4")  # falls back to system 'dftd4'
-```
-
-This file constructs and runs shell commands that invoke `dftd4`. If dispersion values are missing or zero, the path is the first thing to check.
+In **`opt/testsetclass.py`**, **replace the hard-coded DFT-D4 path** with your local path . This file constructs and runs shell commands that invoke `dftd4`. 
 
 ---
 
@@ -142,14 +129,13 @@ Artifacts (checkpoints, exported weights in TurboMole-friendly format, logs) are
 
 - **Reproducibility:** Set Python/NumPy/TensorFlow seeds at the top of `calc.py` if you need exact runs.
 - **Features:** Ensure your feature selection in `calc.py` matches the columns present in your data.
-- **Performance:** Consider pinning TensorFlow and CUDA/cuDNN versions appropriate for your hardware if using GPU.
 
 ---
 
 ## Citation
 
 If you use this code in academic work, please cite the associated paper(s).
-_Add your preferred BibTeX here._
+TO add.
 
 ---
 
