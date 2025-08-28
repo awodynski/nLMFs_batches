@@ -1,7 +1,7 @@
 # n-LMF: Neural Local Mixing Function Training
 
 Training code for **neural local-mixing-function (n-LMF)** based local-hybrid DFT models.
-Implements a Keras/TensorFlow pipeline with a custom `DFTLayer` to evaluate XC terms on molecular grids and fit model parameters across standard benchmark test sets. **DFT-D4** dispersion is included via an external executable.
+Implements a Keras/TensorFlow pipeline with a custom `DFTLayer` to evaluate XC terms on molecular grids and fit model parameters across standard benchmark test sets. **DFT-D4** dispersion is included via an external executable. The code split training into batches contianing one reaction.
 
 > **Data availability:** Preprocessed training/test data are **available upon request**.
 
