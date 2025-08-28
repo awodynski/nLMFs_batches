@@ -3,9 +3,9 @@ import subprocess
 
 class TestsetClass:
     def run_dftd4(self,  a1, a2, coord_path, molecule_charge):
-        command_s6 = f"/homes2/chemie/wodynski/bin/panda6/bin/dftd4 --charge {molecule_charge} --input coord --param 1.0 0.0 {a1} {a2} --mbdscale 0.0 --silent {coord_path} | grep 'Dispersion energy:' | awk '{{print $3}}'"
-        command_s8 = f"/homes2/chemie/wodynski/bin/panda6/bin/dftd4 --charge {molecule_charge} --input coord --param 0.0 1.0 {a1} {a2} --mbdscale 0.0 --silent {coord_path} | grep 'Dispersion energy:' | awk '{{print $3}}'"
-        command_s9 = f"/homes2/chemie/wodynski/bin/panda6/bin/dftd4 --charge {molecule_charge} --input coord --param 0.0 0.0 {a1} {a2} --mbdscale 1.0 --silent {coord_path} | grep 'Dispersion energy:' | awk '{{print $3}}'"
+        command_s6 = f"/path/to/your/dftd4 --charge {molecule_charge} --input coord --param 1.0 0.0 {a1} {a2} --mbdscale 0.0 --silent {coord_path} | grep 'Dispersion energy:' | awk '{{print $3}}'"
+        command_s8 = f"/path/to/your/dftd4 --charge {molecule_charge} --input coord --param 0.0 1.0 {a1} {a2} --mbdscale 0.0 --silent {coord_path} | grep 'Dispersion energy:' | awk '{{print $3}}'"
+        command_s9 = f"/path/to/your/dftd4 --charge {molecule_charge} --input coord --param 0.0 0.0 {a1} {a2} --mbdscale 1.0 --silent {coord_path} | grep 'Dispersion energy:' | awk '{{print $3}}'"
         result_s6 = subprocess.run(command_s6, shell=True, text=True, capture_output=True)
         result_s8 = subprocess.run(command_s8, shell=True, text=True, capture_output=True)
         result_s9 = subprocess.run(command_s9, shell=True, text=True, capture_output=True)
@@ -20,7 +20,7 @@ class TestsetClass:
 
     def calculate_dispersion_energies(self,testset_name, a1, a2, atoms=False):
         self.dispersion_energy_results = {}
-        path='/projects/kaupp/testsets/TestsetLibrary_artur/GMTKN55'
+        path='/path/to/your/coord_files/GMTKN55'
         if not atoms:
             for molecule, charge in self.charges.items():
                 coord_path = f"{path}/{testset_name}/{molecule}/coord"
