@@ -141,7 +141,7 @@ TO add.
 
 ## License
 
-Add a `LICENSE` file (e.g., MIT, BSD-3-Clause) as appropriate for your project.
+MIT.
 
 ---
 
